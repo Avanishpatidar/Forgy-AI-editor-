@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forgy AI Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #e2e8f0;
+            overflow: hidden;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Black Theme Backgrounds */
+        .stealth-bg {
+            background: radial-gradient(circle at 50% 50%, #111111 0%, #000000 100%);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        @keyframes draw-path {
+            0% { stroke-dashoffset: 300; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        @keyframes scribble {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2px, 2px) rotate(5deg); }
+            50% { transform: translate(-2px, -1px) rotate(-5deg); }
+            75% { transform: translate(1px, -2px) rotate(2deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        @keyframes scribble-fast {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(5px, -5px) rotate(10deg); }
+            40% { transform: translate(-5px, 5px) rotate(-10deg); }
+            60% { transform: translate(3px, 8px) rotate(5deg); }
+            80% { transform: translate(-3px, -2px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        @keyframes brush-wave {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 5px #00ffcc); }
+            50% { opacity: 0.6; filter: drop-shadow(0 0 15px #00ffcc); }
+        }
+        
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-breathe { animation: breathe 4s ease-in-out infinite; }
+        .animate-draw { animation: draw-path 2.5s linear infinite; }
+        .animate-scribble { animation: scribble 0.1s linear infinite; }
+        .animate-scribble-fast { animation: scribble-fast 0.3s linear infinite; }
+        .animate-brush { animation: brush-wave 2s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+        .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        
+        /* Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1"
+  }
+}
+</script>
+</head>
+<body class="bg-black min-h-screen text-white">
+    <div id="root" class="h-full w-full stealth-bg"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "Forgy AI Editor",
+  "description": "Transform and edit your images into anime-style art using natural voice and text commands. Powered by Gemini, this tool offers a futuristic, conversational editing experience.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
